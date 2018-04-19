@@ -3,10 +3,11 @@
 import csv
 product_dict = {}
 list=[]
-n=20
+n=200
 i=1
 cvs_file = csv.reader(open('order_products__prior.csv','r'))
 # print(cvs_file)
+
 for abc in cvs_file:
 	if abc[0]=='order_id':
 		continue
@@ -16,7 +17,7 @@ for abc in cvs_file:
 		product_dict.setdefault(abc[0],[]).append(abc[1])
 	i+=1
 	if(i>n):
-		break
+		break						#跳出循环
 for l in product_dict:
 	list.append(product_dict[l])
 print(list)
