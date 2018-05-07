@@ -2,30 +2,38 @@
 #python3.5   
   
 # def loadDataSet():              #加载数据
-    '''''创建一个用于测试的简单的数据集'''  
-    # return [ [ 1, 3, 4,5 ], [ 2, 3, 5 ], [ 1, 2, 3,4, 5 ], [ 2,3,4, 5 ] ]  
-    data_set = [['l1', 'l2', 'l5'], ['l2', 'l4'], ['l2', 'l3'],['l2'],['l1','l2','l3','l4','l5','l6','l7'],
-            ['l1', 'l2', 'l4'], ['l1', 'l3'], ['l2', 'l3'],
-            ['l1', 'l3'], ['l1', 'l2', 'l3','l4', 'l5'], ['l1', 'l2', 'l3','l4']]
-    # import csv
-    # n=100
-    # i=1
-    # product_dict = {}
-    # data_set=[]
-    # cvs_file = csv.reader(open('order_products__prior.csv','r'))
-    # # print(cvs_file)
-    # for abc in cvs_file:
-    #     if abc[0]=='order_id':
-    #         continue
-    #     if abc[0] in product_dict:
-    #         product_dict[abc[0]].append(abc[1])
-    #     else:
-    #         product_dict.setdefault(abc[0],[]).append(abc[1])
-    #     i+=1
-    #     if i>n:
-    #         break
-    # for l in product_dict:
-    #     data_set.append(product_dict[l])
+#         '''''创建一个用于测试的简单的数据集'''  
+#     # return [ [ 1, 3, 4,5 ], [ 2, 3, 5 ], [ 1, 2, 3,4, 5 ], [ 2,3,4, 5 ] ]  
+#     # data_set = [['l1', 'l2', 'l5'], ['l2', 'l4'], ['l2', 'l3'],['l2'],['l1','l2','l3','l4','l5','l6','l7'],
+#     #     ['l1', 'l2', 'l4'], ['l1', 'l3'], ['l2', 'l3'],
+#     #     ['l1', 'l3'], ['l1', 'l2', 'l3','l4', 'l5'], ['l1', 'l2', 'l3','l4']]
+#     # import csv
+#     # n=100
+#     # i=1
+#     # product_dict = {}
+#     # data_set=[]
+#     # cvs_file = csv.reader(open('order_products__prior.csv','r'))
+#     # # print(cvs_file)
+#     # for abc in cvs_file:
+#     #     if abc[0]=='order_id':
+#     #         continue
+#     #     if abc[0] in product_dict:
+#     #         product_dict[abc[0]].append(abc[1])
+#     #     else:
+#     #         product_dict.setdefault(abc[0],[]).append(abc[1])
+#     #     i+=1
+#     #     if i>n:
+#     #         break
+#     # for l in product_dict:
+#     #     data_set.append(product_dict[l])
+#     data_set=[['l1', 'l2', 'l5'],['l2', 'l4'],['l2', 'l3'],['l2'],['l1','l2','l3','l4','l5','l6','l7'],['l1', 'l2', 'l4'],
+#         ['l1', 'l3'],['l2', 'l3'],['l1', 'l3'],['l1', 'l2', 'l3','l4', 'l5'],['l1', 'l2', 'l3','l4']]
+#     return data_set
+
+def loadDataSet():
+    data_set=[['l1', 'l2', 'l5'], ['l2', 'l4'], ['l2', 'l3'],['l2'],['l1','l2','l3','l4','l5','l6','l7'],
+        ['l1', 'l2', 'l4'], ['l1', 'l3'], ['l2', 'l3'],
+        ['l1', 'l3'], ['l1', 'l2', 'l3','l4', 'l5'], ['l1', 'l2', 'l3','l4']]
     return data_set
 
 def createC1( dataSet ):  #生成频繁1项集
@@ -173,11 +181,17 @@ def generateRules( L, supportData, minConf=0.7 ):
             else:  
                 calcConf( freqSet, H1, supportData, bigRuleList, minConf )  
     return bigRuleList
-def mainfunc(myDat):
+def mainfunc(myDat,minSupport=0.3,minConf=0.3):
     L,suppData = apriori( myDat, 0.3)
-    print(L)
-    rules = generateRules( L, suppData, minConf=0.3)  
+    # print(suppData)
+    # for i in suppData:
+    #     print(i)
+    rules = generateRules( L, suppData, minConf=0.3) 
+    return suppData,rules 
 
+# mainfunc(loadDataSet)
+# loadDataSet()
+# mainfunc(loadDataSet())
 # if __name__ == '__main__':  
 #     myDat = loadDataSet()  
 #     # print(myDat)                                 # 导入数据集  

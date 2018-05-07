@@ -3,7 +3,7 @@
 
 def load_data(path_str):
     # import csv
-    # n=100
+    # n=10000
     # i=1
     # product_dict = {}
     # data_set=[]
